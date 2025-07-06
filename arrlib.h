@@ -10,8 +10,15 @@ typedef struct {
 
 #define _arr_header(_arr) ((arr_header*)((char*)_arr - sizeof(arr_header)))
 #define arr_init(_type, _init_cap) _arr_init(sizeof(_type), _init_cap)
-#define arr_push(_arr, _item) (_arr_maybe_grow(_arr, 1, sizeof(typeof(arr[0]))), _arr[_arr_header(_arr)->count++] = _item)
-#define arr_pop(_arr) (_arr_header(_arr)->count--)
+#define arr_push(_arr, _item) (_arr_maybe_grow(_arr, 4, sizeof(typeof(arr[0]))), _arr[_arr_header(_arr)->count++] = _item)
+#define arr_push_many(_arr, ...) do { \
+        typeof(arr[0]) _items[] = { __VA_ARGS__ }; \
+        for (int _i = 0; _i < (int)sizeof(_items) / (int)sizeof(_items[0]); _i++) { \
+             arr_push(_arr, _items[_i]); \
+        } \
+    } while (0) 
+#define arr_pop(_arr) _arr_header(_arr)->count > 0 ? (_arr_header(_arr)->count--) : 0
+#define arr_reset(_arr) (_arr_header(_arr)->count = 0)
 #define arr_count(_arr) (_arr_header(_arr)->count)
 #define arr_cap(_arr) (_arr_header(_arr)->cap)
 
