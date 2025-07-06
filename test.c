@@ -34,4 +34,6 @@ int main() {
     for (int i = 0; i < arr_count(arr); i++) {
         printf("%i/%i: %i\n", i, arr_cap(arr), arr[i]);
     }
+
+    arr_free(arr);
 }

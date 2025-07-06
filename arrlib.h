@@ -31,6 +31,8 @@ typedef struct {
 #define arr_count(_arr) (_arr_header(_arr)->count)
 // get the capacity of _arr
 #define arr_cap(_arr) (_arr_header(_arr)->cap)
+// free the array
+#define arr_free(_arr) (free(_arr_header(_arr)))
 
 void* _arr_init(int item_size, int init_cap);
 void* _arr_maybe_grow(void* arr, int grow_by, int item_size);

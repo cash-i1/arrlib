@@ -18,7 +18,7 @@ int main() {
 
     // use arr_count to get the length of the array
     for (int i = 0; i < arr_count(numbers); i++) {
-        arr_push(numbers, i)
+        arr_push(numbers, i);
     }
 
     // remove the item at the end of the array
@@ -26,5 +26,8 @@ int main() {
 
     // clear the array of all its items
     arr_reset(numbers);
+
+    // free the array
+    arr_free(numbers);
 }
 
