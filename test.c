@@ -15,10 +15,10 @@ int main() {
     arr_push(arr, 8);
     arr_push(arr, 1);
     arr_push(arr, 1);
-    printf("count = %i\n", _arr_header(arr)->count);
+    // printf("count = %i\n", _arr_header(arr)->count);
     // arr_push_many(arr, 1, 2, 3);
     //
-    // for (int i = 0; i < arr_len(arr); i++) {
-    //     printf("%i: %i\n", i, arr[i]);
-    // }
+    for (int i = 0; i < arr_count(arr); i++) {
+        printf("%i/%i: %i\n", i, arr_cap(arr), arr[i]);
+    }
 }
