@@ -29,5 +29,17 @@ int main() {
 
     // free the array
     arr_free(numbers);
+
+    // arrlib also works with structs
+    typedef struct { float x, y; } vec2;
+
+    // create a new array of structs
+    vec2* positions = arr_init(vec2, 3);
+
+    // use arr_push_struct to add a struct to the array
+    arr_push_struct(positions, (vec2){ .x = 1, .y = 10 });
+
+    // free the array
+    arr_free(positions);
 }
 
