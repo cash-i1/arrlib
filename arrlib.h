@@ -14,11 +14,17 @@ typedef struct {
 
 // create a new array with type _type and an initiaal capacity of _init_cap
 #define arr_init(_type, _init_cap) _arr_init(sizeof(_type), _init_cap)
+// create a new array with type _type and an initiaal capacity of _init_cap with n items
+#define arr_init_many(_type, _init_cap, ...) ({ \
+        _type* _arr = arr_init(_type, _init_cap); \
+        arr_push_many(_arr, __VA_ARGS__); \
+        _arr; \
+    })
 // add _item to _arr
-#define arr_push(_arr, _item) (_arr_maybe_grow(_arr, 4, sizeof(typeof(arr[0]))), _arr[_arr_header(_arr)->count++] = _item)
+#define arr_push(_arr, _item) (_arr_maybe_grow(_arr, 4, sizeof(typeof(_arr[0]))), _arr[_arr_header(_arr)->count++] = _item)
 // add n items to _arr
 #define arr_push_many(_arr, ...) do { \
-        typeof(arr[0]) _items[] = { __VA_ARGS__ }; \
+        typeof(_arr[0]) _items[] = { __VA_ARGS__ }; \
         for (int _i = 0; _i < (int)sizeof(_items) / (int)sizeof(_items[0]); _i++) { \
              arr_push(_arr, _items[_i]); \
         } \

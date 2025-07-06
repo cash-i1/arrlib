@@ -26,12 +26,23 @@ int test_init() {
     return ok;
 }
 
+int test_init_many() {
+    int* array = arr_init_many(
+        int, 10,
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    );
+    expect(arr_cap(array) == 10);
+    expect(arr_count(array) == 10);
+    return ok;
+}
+
 // == run tests ==
 int main() {
     int amt_ok = 0;
     int amt_fail = 0;
 
     run_test(test_init, amt_ok, amt_fail);
+    run_test(test_init_many, amt_ok, amt_fail);
 
     int total = amt_ok + amt_fail;
 
