@@ -11,6 +11,7 @@ typedef struct {
 #define _arr_header(_arr) ((arr_header*)((char*)_arr - sizeof(arr_header)))
 #define arr_init(_type, _init_cap) _arr_init(sizeof(_type), _init_cap)
 #define arr_push(_arr, _item) (_arr_maybe_grow(_arr, 1, sizeof(typeof(arr[0]))), _arr[_arr_header(_arr)->count++] = _item)
+#define arr_pop(_arr) (_arr_header(_arr)->count--)
 #define arr_count(_arr) (_arr_header(_arr)->count)
 #define arr_cap(_arr) (_arr_header(_arr)->cap)
 
