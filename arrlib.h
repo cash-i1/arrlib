@@ -29,6 +29,9 @@ typedef struct {
              arr_push(_arr, _items[_i]); \
         } \
     } while (0) 
+// used when pushing a struct with an initializer e.g. (something){ 1, 2, 3 }
+// this has to be done because macros interperet every comma in the initializer as a new macro argument
+#define arr_push_struct arr_push_many
 // remove the element at the end of _arr
 #define arr_pop(_arr) _arr_header(_arr)->count > 0 ? (_arr_header(_arr)->count--) : 0
 // clear _arr
