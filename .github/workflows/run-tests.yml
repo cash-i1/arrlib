@@ -1,0 +1,9 @@
+name: run-tests
+run-name: run tests
+on: [push]
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt install bash
+      - run: cd tests/ && ./run_tests.sh
