@@ -5,5 +5,10 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt install bash
-      - run: cd tests/ && ./run_tests.sh
+      - uses: actions/checkout@v4
+
+      - name: install bash
+        run: sudo apt install bash
+
+      - name: run tests
+        run: cd tests/ && ./run_tests.sh
