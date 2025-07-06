@@ -1,4 +1,4 @@
-# arrlib
+# arrlib <img src="https://github.com/cash-i1/arrlib/actions/workflows/run-tests.yml/badge.svg"></img>
 simple **2 file** C library that provides a [dynamic array](https://en.wikipedia.org/wiki/Dynamic_array), similar to C++'s [std::vector](https://en.cppreference.com/w/cpp/container/vector.html) type.
 
 ## installation
